@@ -99,7 +99,8 @@ namespace tello_driver
 
           if (driver_->count_subscribers(driver_->image_pub_->get_topic_name()) > 0) {
             std_msgs::msg::Header header{};
-            header.frame_id = "camera_frame";
+            // header.frame_id = "camera_frame"; //Should I switch to camera_link
+            header.frame_id = "camera_link";
             header.stamp = stamp;
             cv_bridge::CvImage cv_image{header, sensor_msgs::image_encodings::BGR8, mat};
             sensor_msgs::msg::Image sensor_image_msg;
